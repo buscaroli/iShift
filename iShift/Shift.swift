@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Shift: Identifiable {
+struct Shift: Identifiable, Codable {
     let id = UUID()
     let date: String
     let store: String

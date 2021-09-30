@@ -30,17 +30,31 @@ struct AddShiftView: View {
                 
             }
             
-            Button(action: {
-                let hourlyRateD = Double(hourlyRate) ?? 0.0
-                let hoursD = Double(hours) ?? 0.0
-                let extraD = Double(extra) ?? 0.0
+            HStack {
+                Button(action: {
+                    let hourlyRateD = Double(hourlyRate) ?? 0.0
+                    let hoursD = Double(hours) ?? 0.0
+                    let extraD = Double(extra) ?? 0.0
+                    
+                    let shift = Shift(date: date, store: store, hourlyRate: hourlyRateD , hours: hoursD, extra: extraD, extraDescription: extraDescription)
+                    self.expenses.shifts.append(shift)
+                    
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Save")
+                        .padding()
+                        .foregroundColor(.green)
+                        
+                }
                 
-                let shift = Shift(date: date, store: store, hourlyRate: hourlyRateD , hours: hoursD, extra: extraD, extraDescription: extraDescription)
-                self.expenses.shifts.append(shift)
-                
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Save")
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Cancel")
+                        .padding()
+                        .foregroundColor(.red)
+                        
+                }
             }
         }
     }
