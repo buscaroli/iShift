@@ -14,7 +14,7 @@ struct Shift: Identifiable {
     let hourlyRate: Double
     let hours: Double
     let extra: Double?
-    let extraDescription: String?
+    let extraDescription: String
     
     var total: String {
         let total = hourlyRate * hours + (extra ?? 0.0)

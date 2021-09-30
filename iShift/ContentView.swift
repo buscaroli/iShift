@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-let myShifts: [Shift] = [
-    Shift(date: "1/2/2021", store: "Rowlands 2468", hourlyRate: 25, hours: 9.5, extra: 5.0, extraDescription: "Parking"),
-    Shift(date: "3/2/2021", store: "Independent101", hourlyRate: 23, hours: 9.0, extra: 10.00, extraDescription: "Petrol"),
-    Shift(date: "4/2/2021", store: "Boots123", hourlyRate: 28, hours: 9.0, extra: nil, extraDescription: nil),
-    Shift(date: "8/2/2021", store: "DayLewis987", hourlyRate: 24, hours: 8.0, extra: 5, extraDescription: "Parking"),
-    Shift(date: "9/2/2021", store: "Kamsons101", hourlyRate: 25, hours: 9.0, extra: 10.00, extraDescription: "MURs")
-]
+//let myShifts: [Shift] = [
+//    Shift(date: "1/2/2021", store: "Rowlands 2468", hourlyRate: 25, hours: 9.5, extra: 5.0, extraDescription: "Parking"),
+//    Shift(date: "3/2/2021", store: "Independent101", hourlyRate: 23, hours: 9.0, extra: 10.00, extraDescription: "Petrol"),
+//    Shift(date: "4/2/2021", store: "Boots123", hourlyRate: 28, hours: 9.0, extra: nil, extraDescription: nil),
+//    Shift(date: "8/2/2021", store: "DayLewis987", hourlyRate: 24, hours: 8.0, extra: 5, extraDescription: "Parking"),
+//    Shift(date: "9/2/2021", store: "Kamsons101", hourlyRate: 25, hours: 9.0, extra: 10.00, extraDescription: "MURs")
+//]
 
-class ShiftsList: ObservableObject {
-    @Published var shifts = [Shift]()
-}
 
 struct ContentView: View {
     @ObservedObject var expenses = ShiftsList()
+    @State private var showingAddShift = false
     
     var body: some View {
         NavigationView {
@@ -44,11 +42,14 @@ struct ContentView: View {
             .navigationTitle("iShift")
             .navigationBarItems(trailing:
                                     Button(action: {
-                let shift = Shift(date: "3/2/2021", store: "Independent101", hourlyRate: 23, hours: 9.0, extra: 10.00, extraDescription: "Petrol")
-                self.expenses.shifts.append(shift)
+                self.showingAddShift = true
+                
             }) {
                 Text(Image(systemName: "plus"))
             })
+            .sheet(isPresented: $showingAddShift) {
+                AddShiftView(expenses: self.expenses)
+            }
         }
     }
     
@@ -62,7 +63,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         ContentView()
-            .preferredColorScheme(.dark
-            )
+            .preferredColorScheme(.dark)
     }
 }

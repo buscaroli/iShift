@@ -12,6 +12,8 @@
 		23A0837D2705A3A900E9DD39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A0837C2705A3A900E9DD39 /* Assets.xcassets */; };
 		23A083802705A3A900E9DD39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A0837F2705A3A900E9DD39 /* Preview Assets.xcassets */; };
 		23A083872705B87C00E9DD39 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A083862705B87C00E9DD39 /* Shift.swift */; };
+		23A083892705C78700E9DD39 /* AddShiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A083882705C78700E9DD39 /* AddShiftView.swift */; };
+		23A0838B2705CCA800E9DD39 /* ShiftsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0838A2705CCA800E9DD39 /* ShiftsList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		23A0837C2705A3A900E9DD39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23A0837F2705A3A900E9DD39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		23A083862705B87C00E9DD39 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		23A083882705C78700E9DD39 /* AddShiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftView.swift; sourceTree = "<group>"; };
+		23A0838A2705CCA800E9DD39 /* ShiftsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			children = (
 				23A083782705A3A900E9DD39 /* iShiftApp.swift */,
 				23A0837A2705A3A900E9DD39 /* ContentView.swift */,
+				23A083882705C78700E9DD39 /* AddShiftView.swift */,
 				23A083862705B87C00E9DD39 /* Shift.swift */,
+				23A0838A2705CCA800E9DD39 /* ShiftsList.swift */,
 				23A0837C2705A3A900E9DD39 /* Assets.xcassets */,
 				23A0837E2705A3A900E9DD39 /* Preview Content */,
 			);
@@ -140,9 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A0838B2705CCA800E9DD39 /* ShiftsList.swift in Sources */,
 				23A0837B2705A3A900E9DD39 /* ContentView.swift in Sources */,
 				23A083872705B87C00E9DD39 /* Shift.swift in Sources */,
 				23A083792705A3A900E9DD39 /* iShiftApp.swift in Sources */,
+				23A083892705C78700E9DD39 /* AddShiftView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
