@@ -44,8 +44,10 @@ struct AddShiftView: View {
                     Text("Save")
                         .padding()
                         .foregroundColor(.green)
+                        .font(.system(size: 20, weight: .bold))
                         
                 }
+                
                 
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -53,7 +55,7 @@ struct AddShiftView: View {
                     Text("Cancel")
                         .padding()
                         .foregroundColor(.red)
-                        
+                        .font(.system(size: 20, weight: .bold))
                 }
             }
         }

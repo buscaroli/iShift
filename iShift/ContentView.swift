@@ -19,6 +19,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var expenses = ShiftsList()
     @State private var showingAddShift = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
@@ -49,6 +50,7 @@ struct ContentView: View {
             })
             .sheet(isPresented: $showingAddShift) {
                 AddShiftView(expenses: self.expenses)
+                    .preferredColorScheme(colorScheme)
             }
         }
     }
