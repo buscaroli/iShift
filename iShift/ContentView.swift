@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-struct Shift: Identifiable {
-    let id = UUID()
-    let date: String
-    let store: String
-    let hourlyRate: Double
-    let hours: Double
-    let extra: Double?
-    let extraDescription: String?
-    
-    var total: String {
-        let total = hourlyRate * hours + (extra ?? 0.0)
-        return String(format: "%.2f", total)
-    }
-    
-}
-
 let myShifts: [Shift] = [
     Shift(date: "1/2/2021", store: "Rowlands 2468", hourlyRate: 25, hours: 9.5, extra: 5.0, extraDescription: "Parking"),
     Shift(date: "3/2/2021", store: "Independent101", hourlyRate: 23, hours: 9.0, extra: 10.00, extraDescription: "Petrol"),
@@ -31,11 +15,17 @@ let myShifts: [Shift] = [
     Shift(date: "9/2/2021", store: "Kamsons101", hourlyRate: 25, hours: 9.0, extra: 10.00, extraDescription: "MURs")
 ]
 
+class ShiftsList: ObservableObject {
+    @Published var shifts = [Shift]()
+}
+
 struct ContentView: View {
+    @ObservedObject var expenses = ShiftsList()
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach (myShifts) { shift in
+                ForEach (expenses.shifts) { shift in
                     HStack (alignment: .firstTextBaseline) {
                         VStack (alignment: .leading){
                             Text("\(shift.store)")
@@ -49,12 +39,23 @@ struct ContentView: View {
                         
                     }
                 }
+                .onDelete(perform: removeItems)
             }
             .navigationTitle("iShift")
-            .navigationBarItems(trailing: Image(systemName: "plus").font(.system(size: 18, weight: .bold)))
-                                    
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                let shift = Shift(date: "3/2/2021", store: "Independent101", hourlyRate: 23, hours: 9.0, extra: 10.00, extraDescription: "Petrol")
+                self.expenses.shifts.append(shift)
+            }) {
+                Text(Image(systemName: "plus"))
+            })
         }
     }
+    
+    func removeItems(at offsets: IndexSet) {
+        expenses.shifts.remove(atOffsets: offsets)
+    }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {
